@@ -1,0 +1,116 @@
+/* Styling for the top statistic cards */
+.styled-card {
+  border: 1px solid rgb(238, 242, 242); ;
+  box-shadow: 0 0 11px rgba(89, 187, 176, 0.693);
+}
+.card-title {
+  font-weight: 600;
+  color: #343a40;
+}
+.text-danger { color: #dc3545 !important; }
+.text-success { color: #198754 !important; }
+.text-primary { color: #0d6efd !important; }
+
+
+/* Styling for the individual bed cards */
+.bed-card {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.bed-card.occupied {
+  border: 3px solid #ff7683;
+  background-color: #fff5f5;
+}
+.bed-card.available {
+  border: 3px solid #46df98;
+  background-color: #f6fff8;
+}
+.bed-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  font-weight: bold;
+}
+.badge {
+  color: white; 
+  font-weight: 600; 
+  padding: 0.4em 0.75em; 
+  border-radius: 4px; 
+  text-transform: capitalize; 
+  font-size: 0.8rem; 
+  vertical-align: middle;
+}
+.bed-card-body {
+  padding: 1rem;
+  flex-grow: 1;
+  min-height: 80px;
+  
+}
+.patient-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0;
+}
+.admit-date {
+  font-size: 0.8rem;
+  color: #6c757d;
+}
+.available-text {
+  color: #388e3c;
+}
+
+
+.bed-card-footer {
+  padding: 0.75rem; /* Adds space above, below, and on the sides of the button */
+  /* Optional: adds a subtle background color */
+}
+
+.bed-card-footer .btn {
+  border-radius: 6px; /* Optional: rounds the button corners */
+  font-weight: 600;
+}
+.top-text{
+  color:rgb(36, 152, 139);  
+}
+.back-btn {
+  /* This creates a new "stacking context" which is crucial */
+  position: fixed;
+  transform: translateZ(0); /* This trick forces GPU rendering and fixes stacking bugs */
+
+  /* Position it where you want */
+  top: 2rem;
+  left: 2rem;
+
+  /* A very high z-index to win any layering conflicts */
+  z-index: 9999;
+
+  /* Your preferred styling */
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  color: #343a40;
+  box-shadow: 0 5px 13px rgba(0, 0, 0, 0.15);
+
+  /* Center the arrow icon inside */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+
+  /* Smooth hover animation */
+  transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+  transform: scale(1.1) translateZ(0); /* Maintain stacking context on hover */
+  background: white;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}

@@ -1,0 +1,50 @@
+<div class="admin-container">
+  <div class="admin-header">
+    <h1>Admin Panel</h1>
+    <p>Register New Doctors</p>
+  </div>
+
+  <div class="admin-form-container">
+    <form (ngSubmit)="onRegisterDoctor()" class="admin-form">
+      <h2>Doctor Registration</h2>
+
+      <div class="form-group">
+        <label for="doctorId">Doctor ID</label>
+        <input type="text" id="doctorId" [(ngModel)]="doctorData.id" name="doctorId" placeholder="Enter Doctor ID" required>
+      </div>
+
+      <div class="form-group">
+        <label for="doctorPassword">Password</label>
+        <input type="password" id="doctorPassword" [(ngModel)]="doctorData.password" name="doctorPassword" placeholder="Enter Password" required>
+      </div>
+
+      <div class="form-group">
+        <label for="doctorName">Full Name</label>
+        <input type="text" id="doctorName" [(ngModel)]="doctorData.name" name="doctorName" placeholder="Enter Full Name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="doctorDepartment">Department</label>
+        <input type="text" id="doctorDepartment" [(ngModel)]="doctorData.department" name="doctorDepartment" placeholder="Enter Department" required>
+      </div>
+
+      <div class="form-group">
+        <label for="doctorSpecialization">Specialization</label>
+        <input type="text" id="doctorSpecialization" [(ngModel)]="doctorData.specialization" name="doctorSpecialization" placeholder="Enter Specialization">
+      </div>
+
+      <div class="form-group">
+        <label for="doctorEmail">Email</label>
+        <input type="email" id="doctorEmail" [(ngModel)]="doctorData.email" name="doctorEmail" placeholder="Enter Email">
+      </div>
+
+      <div class="button-group">
+        <button type="submit" class="btn-submit">Register Doctor</button>
+        <button type="button" class="btn-back" (click)="goBack()">Back to Home</button>
+      </div>
+
+      <div *ngIf="successMessage" class="success-message">{{ successMessage }}</div>
+      <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+    </form>
+  </div>
+</div>

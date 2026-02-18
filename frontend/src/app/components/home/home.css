@@ -1,0 +1,367 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: linear-gradient(rgba(220, 33, 33, 0.175), rgba(16, 67, 220, 0.301));
+}
+
+/* --- Main Container (Desktop) --- */
+.container {
+  position: relative;
+  width: 900px;
+  height: 550px;
+  border-radius: 12px;
+  box-shadow: 0 25px 50px -12px rgba(0, 77, 64, 0.25);
+  overflow: hidden;
+  background-color: #fff;
+}
+
+/* --- Welcome Panel (Desktop) --- */
+.welcome-panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 65%;
+  height: 100%;
+  z-index: 10;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 40px;
+  background-image: linear-gradient(rgba(79, 177, 243, 0.3), rgba(0, 0, 0, 0.5)), url('/assets/images/dashpic3.jpg');
+  background-position: center;
+  background-size: cover;
+  clip-path: url(#s-curve-divider);
+}
+
+.welcome-content h1 {
+  font-size: 2.8em;
+  font-weight: 700;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  padding-right: 35px;
+}
+.welcome-content p {
+  font-size: 1.1em;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+  padding-right: 35px;
+}
+
+/* --- Forms Wrapper (Desktop) --- */
+.forms-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+.placeholder {
+  display: none;
+}
+.form-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/* --- Form Styling (Shared) --- */
+.login-form {
+  width: 40%;
+  padding: 40px;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  animation: slideUpAndFadeIn 0.6s ease-out forwards;
+}
+.login-form h3 {
+  font-size: 2em;
+  font-weight: 600;
+  color: #266b62;
+  margin-bottom: 2rem;
+}
+
+@keyframes slideUpAndFadeIn {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Inputs and Buttons (Shared) --- */
+.input-group {
+  width: 100%;
+  max-width: 350px;
+  margin-bottom: 1.2rem;
+  text-align: left;
+}
+.input-group label { display: none; }
+.input-group input {
+  width: 100%;
+  height: 48px;
+  padding: 14px 18px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background: #f9f9f9;
+  color: #333;
+  font-size: 1em;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+.input-group input::placeholder { color: #aaa; }
+.input-group input:focus {
+  outline: none;
+  border-color: #26a69a;
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(38, 166, 154, 0.1);
+}
+
+.button-group {
+  width: 100%;
+  max-width: 380px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 1.5rem;
+}
+
+button {
+  padding: 14px 24px;
+  border-radius: 8px;
+  border: none;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+}
+
+.role-buttons {
+  display: flex;
+  gap: 15px;
+  padding-right: 45px;
+}
+.role-buttons button {
+  background: #fff;
+  color: #333;
+  width: 140px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+.role-buttons button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.btn-submit {
+  background: linear-gradient(to right, #26a69a, #2ab8a8);
+  color: white;
+  box-shadow: 0 4px 15px rgba(38, 166, 154, 0.2);
+}
+.btn-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(38, 166, 154, 0.3);
+}
+
+.btn-link {
+  background: none;
+  color: #26a69a;
+  font-size: 0.9em;
+  padding: 5px;
+  font-weight: 500;
+}
+.btn-link:hover { text-decoration: underline; }
+
+.btn-secondary {
+  background: #f0f2f5;
+  color: #555;
+  border: 1px solid #e0e0e0;
+}
+.btn-secondary:hover { background: #e5e7ea; border-color: #d0d0d0; }
+
+.error-message {
+  color: #D32F2F;
+  background-color: #FFCDD2;
+  padding: 10px;
+  border-radius: 8px;
+  margin-top: 1rem;
+  text-align: center;
+  font-weight: 500;
+  width: 100%;
+  max-width: 350px;
+}
+
+.initial-view-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 3.5rem;
+  box-sizing: border-box;
+  animation: fadeIn 0.6s ease-in-out;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.initial-view-container h3 {
+  font-weight: 600; color: #d32f2f; text-align: center; margin-bottom: 2rem;
+  line-height: 1.6; font-size: 1.2em; text-transform: uppercase;
+}
+.sos-container {
+  text-align: center; width: 100%; padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.95); border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); border: 2px solid #ff6b6b;
+}
+.btn-sos {
+  background: linear-gradient(145deg, #ff6b6b, #ee5253); color: white; border: none;
+  padding: 16px 25px; border-radius: 15px; font-size: 1.2rem; font-weight: 600;
+  cursor: pointer; transition: all 0.3s ease; box-shadow: 0 5px 20px rgba(238, 82, 83, 0.4);
+  animation: pulse 2.5s infinite; width: 100%; max-width: 280px;
+}
+@keyframes pulse {
+  0% { transform: scale(1); box-shadow: 0 5px 20px rgba(238, 82, 83, 0.4); }
+  50% { transform: scale(1.04); box-shadow: 0 8px 25px rgba(238, 82, 83, 0.6); }
+  100% { transform: scale(1); box-shadow: 0 5px 20px rgba(238, 82, 83, 0.4); }
+}
+.btn-sos:hover { animation: none; }
+.sos-container .error-message, .sos-container .success-message {
+  margin-top: 20px; font-size: 1rem; font-weight: 500;
+}
+.sos-container .error-message { color: #c0392b; }
+.sos-container .success-message { color: #27ae60; }
+
+/**************************************************/
+/* CORRECTED RESPONSIVE STYLES FOR MOBILE/TABLET  */
+/**************************************************/
+@media (max-width: 900px) {
+  :host { padding: 0; }
+
+  /* 1. The main container becomes the background image holder */
+  .container {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    border-radius: 0;
+    box-shadow: none;
+    background-image: linear-gradient(rgba(79, 177, 243, 0.3), rgba(0, 0, 0, 0.5)), url('/assets/images/dashpic3.jpg');
+    background-position: center;
+    background-size: cover;
+    position: relative; /* Crucial for positioning children */
+  }
+
+  /* 2. Both panels are now absolute overlays, centered inside the container */
+  .welcome-panel, .forms-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    transition: opacity 0.5s ease-in-out; /* For smooth fading */
+  }
+
+  /* Welcome panel no longer needs its own background or clip-path */
+  .welcome-panel {
+    clip-path: none;
+    background-image: none;
+  }
+
+  
+  /* By default, the welcome panel is visible and clickable */
+  .welcome-panel {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  /* The forms wrapper is hidden and not clickable */
+  .forms-wrapper {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* WHEN A BUTTON IS CLICKED, REVERSE THE VISIBILITY */
+  .container.login-view-active .welcome-panel {
+    opacity: 0;
+    pointer-events: none;
+  }
+  .container.login-view-active .forms-wrapper {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* 4. Style the content inside the panels */
+  .form-container {
+    justify-content: center;
+    width: 100%;
+    height: auto; /* Allow content to define height */
+  }
+
+  .welcome-content {
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    color: #fff;
+  }
+  .welcome-content h1, .welcome-content p, .role-buttons {
+    padding-right: 0; /* Remove desktop padding */
+  }
+  .role-buttons {
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    align-items: center;
+  }
+  .role-buttons button {
+    width: 100%;
+    max-width: 280px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+    border-radius: 25px;
+  }
+
+  /* 5. Style the login form with a "frosted glass" effect */
+  .login-form {
+    width: 100%;
+    max-width: 400px;
+    padding: 30px 25px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+  .login-form h3 {
+    color: #fff;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+  }
+  .input-group input {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
+    color: #fff;
+  }
+  .input-group input::placeholder { color: #eee; }
+  .input-group input:focus {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: #fff;
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1);
+  }
+  .btn-link, .btn-secondary {
+    color: #fff;
+    opacity: 0.9;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+}
+

@@ -1,0 +1,138 @@
+<div class="container" [class.login-view-active]="isLoginViewActive">
+
+  <div class="welcome-panel">
+    <div class="welcome-content">
+      <h1>Welcome Back!</h1>
+      <p>Select your role to continue.</p>
+      <div class="role-buttons">
+        <button (click)="showForm('patient')">Patient</button>
+        <button (click)="showForm('doctor')">Doctor</button>
+        <button (click)="showForm('admin')">Admin</button>
+      </div>
+      
+    </div>
+  </div>
+<svg width="0" height="0" style="position: absolute;">
+  <defs>
+    <clipPath id="s-curve-divider" clipPathUnits="objectBoundingBox">
+      <path d="M 0 0 L 1 0 C 0.8 0.2, 0.9 0.8, 1 1 L 0 1 Z" />
+    </clipPath>
+  </defs>
+</svg>
+  <div class="forms-wrapper">
+    <div class="placeholder"></div>
+
+    <div class="form-container"> 
+      <div *ngIf="currentView === ''" class="initial-view-container">
+        <h3>In case of an emergency, <br>hit the button.</h3>
+        <div class="sos-container">
+          <button class="btn-sos" (click)="sendSOS()">
+            EMERGENCY
+          </button>
+          <p *ngIf="sosMessage" [class.error-message]="isSosError" [class.success-message]="!isSosError">
+            {{ sosMessage }}
+          </p>
+        </div>
+      </div>
+      <!-- Patient Login Form -->
+      <div *ngIf="currentView === 'patientLogin'" class="login-form">
+        <h3 class="card-title text-center mb-4">Patient Login</h3>
+        <div class="input-group">
+          <label for="patientEmail">Email</label>
+          <input type="email" id="patientEmail" name="patientEmail" placeholder="Enter Email" [(ngModel)]="patientLoginData.email" required>
+        </div>
+        <div class="input-group">
+          <label for="patientPassword">Password</label>
+          <input type="password" id="patientPassword" name="patientPassword" placeholder="Enter Password" [(ngModel)]="patientLoginData.password" required>
+        </div>
+        <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+        <div *ngIf="successMessage" class="success-message">{{ successMessage }}</div>
+        <div class="button-group">
+          <button type="button" (click)="onPatientLogin()" class="btn-submit">Login</button>
+          <button type="button" class="btn-link" (click)="switchView('patientRegister')">New User? Register</button>
+          <button type="button" class="btn-secondary" (click)="showSelection()">Back</button>
+        </div>
+      </div>
+
+      <!-- Doctor Login Form -->
+     <div *ngIf="currentView === 'doctorLogin'" class="login-form">
+    <h3 class="card-title text-center mb-4">Doctor Login</h3>
+
+    <!-- <form (ngSubmit)="onDoctorLogin()"> -->
+
+      <div class="input-group">
+        <label for="doctorEmail">Doctor ID</label>
+        <input type="text" id="doctorID" name="doctorID" placeholder="Enter Doctor ID" [(ngModel)]="doctorLoginData.email" required>
+      </div>
+
+      <div class="input-group">
+        <label for="doctorPassword">Password</label>
+        <input type="password" id="doctorPassword" name="doctorPassword" placeholder="Enter Password" [(ngModel)]="doctorLoginData.password" required>
+      </div>
+
+      <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+      <div *ngIf="successMessage" class="success-message">{{ successMessage }}</div>
+
+      <div class="button-group">
+        <button type="button" (click)="onDoctorLogin()" class="btn-submit">Login</button>
+        <button type="button" class="btn-secondary" (click)="showSelection()">Back</button>
+      </div>
+    <!-- </form> -->
+  </div>
+
+  <!-- Admin Login Form -->
+  <div *ngIf="currentView === 'adminLogin'" class="login-form">
+    <h3 class="card-title text-center mb-4">Admin Login</h3>
+
+    <div class="input-group">
+      <label for="adminUsername">Username</label>
+      <input type="text" id="adminUsername" name="adminUsername" placeholder="Enter Username" [(ngModel)]="adminLoginData.username" required>
+    </div>
+
+    <div class="input-group">
+      <label for="adminPassword">Password</label>
+      <input type="password" id="adminPassword" name="adminPassword" placeholder="Enter Password" [(ngModel)]="adminLoginData.password" required>
+    </div>
+
+    <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+    <div *ngIf="successMessage" class="success-message">{{ successMessage }}</div>
+
+    <div class="button-group">
+      <button type="button" (click)="onAdminLogin()" class="btn-submit">Login</button>
+      <button type="button" class="btn-secondary" (click)="showSelection()">Back</button>
+    </div>
+  </div>
+
+  <div *ngIf="currentView === 'selection'">
+    <h3>Welcome</h3>
+    <p>Please choose an option.</p>
+    </div>
+
+      <!-- Patient Registration Form -->
+      <div *ngIf="currentView === 'patientRegister'" class="login-form">
+        <h3 class="card-title text-center mb-4">Patient Registration</h3>
+        <form (ngSubmit)="onPatientRegister()">
+          <div class="input-group">
+            <label for="registerName">Full Name</label>
+            <input type="text" id="registerName" name="registerName" placeholder="Enter your Name" [(ngModel)]="patientRegisterData.fullName" required>
+          </div>
+          <div class="input-group">
+            <label for="registerEmail">Email</label>
+            <input type="email" id="registerEmail" name="registerEmail" placeholder="Enter your Email" [(ngModel)]="patientRegisterData.email" required>
+          </div>
+          <div class="input-group">
+            <label for="registerPassword">Password</label>
+            <input type="password" id="registerPassword" name="registerPassword" placeholder=" Set your Password" [(ngModel)]="patientRegisterData.password" required>
+          </div>
+           <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+           <div *ngIf="successMessage" class="success-message">{{ successMessage }}</div>
+          <div class="button-group">
+            <button type="submit" class="btn-submit">Register</button>
+            <button type="button" class="btn-secondary" (click)="switchView('patientLogin')">Back to Login</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>

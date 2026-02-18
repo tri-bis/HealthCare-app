@@ -1,0 +1,32 @@
+<div class="sidebar-wrapper">
+  <nav class="sidebar-nav" [class.collapsed]="isCollapsed">
+    <div class="sidebar-header">
+      <span class="logo-icon">🩺</span>
+      <h3>Doctor's Portal</h3>
+    </div>
+    
+    <ul class="nav-links">
+      <li>
+        <a
+          routerLink="/doctor-home/dashboard"
+          routerLinkActive="active-link"
+          [routerLinkActiveOptions]="{exact: true}">
+          Home
+        </a>
+      </li>
+      <li>
+        <a
+          routerLink="/doctor-home/schedules"
+          routerLinkActive="active-link">
+           Schedules
+        </a>
+      </li>
+      </ul>
+  </nav>
+
+  <div class="sidebar-footer">
+    <button (click)="onLogout()" class="logout-button text-center">
+      Logout
+    </button>
+  </div>
+</div>

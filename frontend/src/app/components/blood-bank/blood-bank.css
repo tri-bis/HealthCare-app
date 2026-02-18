@@ -1,0 +1,197 @@
+/* --- Card Grid Layout (Using CSS Grid for perfect responsiveness) --- */
+.row.g-4 {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+/* --- Section Title --- */
+
+.text-center {
+  color:rgb(36, 152, 139);
+  font-weight: 400;
+}
+
+/* --- Individual Card Styling --- */
+.card-blood-status {
+  background: #ffffff;
+  border: 1px solid #e9ecef;
+  /* A thick left border for the status color */
+  border-left: 6px solid #adb5bd; /* Neutral default color */
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  
+}
+
+/* --- Status-Based Card Themes --- */
+
+/* HIGH Availability (Greenish) */
+.card-blood-status.high {
+  border-color: #28a745;
+  background: linear-gradient(135deg,#58dc77,#317942); /* Subtle green tint */
+ 
+}
+.card-blood-status.high:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(40, 167, 70, 0.825); /* Greenish shadow */
+  border-color:  #36cf2e;
+}
+
+/* MODERATE Availability (Yellowish) */
+.card-blood-status.moderate {
+  border-color: #ffc107;
+  background:linear-gradient(135deg,#ffe523,#87701d);/* Subtle yellow tint */
+}
+.card-blood-status.moderate:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(255, 193, 7, 0.907); /* Yellowish shadow */
+  border-color: #f1c903;
+}
+
+/* LOW Availability (Reddish) */
+.card-blood-status.low {
+  border-color: #dc3545;
+   background:linear-gradient(135deg,#fc4b5d,#681e25)  /* Subtle red tint */
+}
+.card-blood-status.low:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgb(220, 53, 70); /* Reddish shadow */
+  border-color: #ef0018;
+}
+
+/* --- Card Header for Status Badges --- */
+.card-header-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid #f0f0f0;
+  /* Make header transparent to show the card's background tint */
+  background-color: transparent;
+}
+
+.status-badge {
+  padding: 0.3em 0.7em;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.status-badge.high { background:linear-gradient(135deg,#28a745,#073512) ; }
+.status-badge.moderate { background:linear-gradient(135deg,#fadd03,#daac06); color: #343a40; } /* Dark text on yellow */
+.status-badge.low { background:linear-gradient(135deg,#dc3545,#741922) ; }
+
+
+/* --- Card Body Content --- */
+.card-body {
+  padding: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.blood-group {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #343a40;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+
+.unit-count {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1c1c1d;
+  margin-bottom: 0.5rem;
+}
+
+.description-text {
+  font-size: 0.9rem;
+  color: #212224;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+/* --- View Details Button --- */
+.btn-view-details {
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  border: none;
+  width: 100%;
+}
+.back-btn {
+  /* This creates a new "stacking context" which is crucial */
+  position: fixed;
+  transform: translateZ(0); /* This trick forces GPU rendering and fixes stacking bugs */
+
+  /* Position it where you want */
+  top: 2rem;
+  left: 2rem;
+
+  /* A very high z-index to win any layering conflicts */
+  z-index: 9999;
+
+  /* Your preferred styling */
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  color: #343a40;
+  box-shadow: 0 5px 13px rgba(0, 0, 0, 0.25);
+
+  /* Center the arrow icon inside */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+
+  /* Smooth hover animation */
+  transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+  transform: scale(1.1) translateZ(0); /* Maintain stacking context on hover */
+  background: white;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+.blood-container {
+  padding: 40px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+  box-shadow: 
+    0 10px 40px rgba(0, 0, 0, 0.08),
+    0 1px 4px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  margin: 20px auto;
+  max-width: 1400px;
+  position: relative;
+  overflow: hidden;
+}
+
+.blood-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #1a73e8, #24988b, #28a745);
+  border-radius: 20px 20px 0 0;
+}

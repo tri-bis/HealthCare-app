@@ -1,0 +1,15 @@
+<div class="doctor-layout">
+  <button class="hamburger-btn" (click)="onToggleSidebar()" aria-label="Toggle Sidebar">
+    <span class="hamburger-line"></span>
+    <span class="hamburger-line"></span>
+    <span class="hamburger-line"></span>
+  </button>
+
+  <div class="overlay" *ngIf="sidebarExpanded" (click)="onToggleSidebar()"></div>
+
+  <app-sidebar class="sidebar-container" [class.expanded]="sidebarExpanded"></app-sidebar>
+
+  <main class="content-container" [class.shifted]="sidebarExpanded">
+    <router-outlet></router-outlet>
+  </main>
+</div>

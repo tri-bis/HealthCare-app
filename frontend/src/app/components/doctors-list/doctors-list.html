@@ -1,0 +1,63 @@
+<div class="container mt-5 ">
+   <a routerLink="/departments" class="back-btn btn-secondary position-fixed top-0 start-0 m-5 ">
+  <i class="bi bi-arrow-left"></i>
+</a>
+<div class="top-text text-center my-5">
+ 
+    <h1>Our {{departmentName}} Doctors</h1>
+    <p class="lead">Choose a doctor to book appointment</p>
+  </div>
+  <div *ngIf="doctors.length > 0; else noDoctors" class="row ">
+    <div *ngFor="let doctor of doctors" class="col-md-3 mb-5">
+      <div class="card  styled-card h-100 shadow-sm ">
+        <img *ngIf="doctor.imageUrl" [src]="doctor.imageUrl" class="card-img-top" alt="Photo of {{ doctor.name }}">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">{{ doctor.name }}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{ doctor.specialty }}</h6>
+          <p class="card-text">A brief bio for the doctor would go here.</p>
+          
+          <button class="btn btn-custom-gradient mt-auto" data-bs-toggle="modal" data-bs-target="#appointmentModal" (click)="selectDoctor(doctor)">
+            Book Appointment
+          </button>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+
+  <ng-template #noDoctors>
+    <div class="alert alert-warning" role="alert">
+      No doctors are currently listed for the {{ departmentName }} department.
+    </div>
+  </ng-template>
+</div>
+
+
+<div class="modal fade" id="appointmentModal" tabindex="-1" aria-labelledby="appointmentModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="appointmentModalLabel">Book Appointment with {{ selectedDoctor?.name }}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="onAppointmentSubmit()">
+          <div class="mb-3">
+            <label for="patientName" class="form-label">Your Name</label>
+            <input type="text" class="form-control" id="patientName" [(ngModel)]="appointmentDetails.patientName" name="patientName" required>
+          </div>
+          <div class="mb-3">
+            <label for="patientEmail" class="form-label">Your Email</label>
+            <input type="email" class="form-control" id="patientEmail" [(ngModel)]="appointmentDetails.patientEmail" name="patientEmail" required>
+          </div>
+          <div class="mb-3">
+            <label for="bookingTime" class="form-label">Appointment Time</label>
+            <input type="datetime-local" class="form-control" id="bookingTime" [(ngModel)]="appointmentDetails.bookingTime" name="bookingTime" [min]="minDateTime"  required>
+          </div>
+          <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Submit Appointment</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+</div>

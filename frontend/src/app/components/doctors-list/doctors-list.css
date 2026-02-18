@@ -1,0 +1,224 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+.doctor-image {
+  height: 100px; /* Or any fixed height you prefer */
+  object-fit: cover; /* This prevents the image from being stretched or squashed */
+}
+.styled-card {
+      border: 2px solid #2ab8a8; /* Remove default border */
+      border-radius: 12px; /* Softer corners */
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Modern, subtle shadow */
+      transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover */
+      text-align: center;
+       overflow: hidden;
+}
+
+    /* Card Hover Effect */
+.styled-card:hover {
+      transform: translateY(-3px); 
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* Enhance the shadow */
+      border: 2px solid #10eec2; 
+}
+
+    /* Custom Button Styling */
+.btn-custom-gradient {
+      background-image: linear-gradient(to right, #26a69a, #2ab8a8);
+      
+      /* Basic button styles */
+      border: none;
+      color: white;
+      padding: 10px 24px;
+      font-weight: 500;
+      border-radius: 50px; /* Pill shape */
+      transition: all 0.3s ease; /* Smooth transition for hover */
+      box-shadow: 0 4px 12px rgba(42, 184, 168, 0.4); /* Shadow that matches the button color */
+}
+
+    /* Button Hover Effect */
+.btn-custom-gradient:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(42, 184, 168, 0.5);
+      color: white; 
+}
+body {
+  background-color: #839eb8 ;
+}
+/* Title Styling */
+.styled-card .card-title {
+  font-size: 1.5rem; 
+  font-weight: 600; 
+  margin-bottom: 0.75rem; 
+}
+/* Paragraph Styling */
+.styled-card .card-text {
+    font-size:1rem;
+  color: #6c757d;
+  line-height: 1.6; 
+}
+.top-text h1{
+  color:rgb(36, 152, 139);
+}
+.lead{
+ color:rgb(11, 11, 11);
+ font-weight: 400;
+}
+.back-btn {
+  /* This creates a new "stacking context" which is crucial */
+  position: fixed;
+  transform: translateZ(0); /* This trick forces GPU rendering and fixes stacking bugs */
+
+  /* Position it where you want */
+  top: 2rem;
+  left: 2rem;
+
+  /* A very high z-index to win any layering conflicts */
+  z-index: 9999;
+
+  /* Your preferred styling */
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  color: #343a40;
+  box-shadow: 0 5px 13px rgba(0, 0, 0, 0.15);
+
+  /* Center the arrow icon inside */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+
+  /* Smooth hover animation */
+  transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+  transform: scale(1.1) translateZ(0); /* Maintain stacking context on hover */
+  background: white;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+
+/* --- 1. FONT IMPORT & ROOT VARIABLES --- */
+
+
+:root {
+  --primary-color: #00796b; 
+  --primary-color-light: #e0f2f1; 
+  --text-dark: #263238;
+  --text-light: #546e7a;
+  --border-color: #cfd8dc;
+  --white: #ffffff;
+  --font-family: 'Poppins', sans-serif;
+}
+
+
+/* The .fade class is from Bootstrap, we are enhancing it */
+.modal-backdrop.show {
+    opacity: 0.6;
+    backdrop-filter: blur(5px);
+}
+
+.modal-dialog {
+    max-width: 550px;
+    margin: 1.75rem auto;
+}
+
+.modal-content {
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.2);
+    font-family: var(--font-family);
+    background-color: #f8f9fa; /* Slightly off-white for a softer look */
+}
+
+/* --- 3. MODAL HEADER --- */
+.modal-header {
+    background-color: rgb(0, 128, 81);
+    color: var(--white);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom: none;
+    padding: 1.25rem 1.5rem;
+}
+
+.modal-title {
+    font-weight: 600;
+    font-size: 1.25rem;
+}
+
+.btn-close {
+    background-color: transparent;
+    border: none;
+    font-size: 1rem;
+    color: var(--white);
+    opacity: 0.8;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-close:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* --- 4. MODAL BODY & FORM ELEMENTS --- */
+.modal-body {
+    padding: 2rem 2.5rem; /* More spacious padding */
+}
+
+.form-label {
+    font-weight: 500;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+}
+
+.form-control {
+    padding: 12px 15px;
+    font-size: 1rem;
+    border: 3px solid rgba(55, 173, 160, 0.77);
+    border-radius: 15px;
+    background-color: var(--white);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-control:focus {
+    
+    box-shadow: 0 0 0 4px rgba(0, 121, 107, 0.15);
+    background-color: var(--white);
+}
+
+/* Specific styling for datetime-local input */
+input[type="datetime-local"] {
+    color: var(--text-dark);
+}
+
+/* --- 5. SUBMIT BUTTON --- */
+.modal-body .btn-primary {
+    width: 100%;
+    padding: 14px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    background-color: rgb(36, 152, 139);
+    border: none;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+}
+
+.modal-body .btn-primary:hover {
+    background-color: #005a4f; /* Darker teal on hover */
+    transform: translateY(-2px);
+    box-shadow: 0 7px 20px rgba(0, 121, 107, 0.25);
+}
+
+/* --- 6. RESPONSIVE ADJUSTMENTS --- */
+@media (max-width: 576px) {
+    .modal-dialog {
+        margin: 10px;
+    }
+    .modal-body {
+        padding: 1.5rem;
+    }
+}

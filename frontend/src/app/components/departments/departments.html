@@ -1,0 +1,22 @@
+<div class="top-text container my-5">
+  <a routerLink="/dashboard" class="back-btn btn btn-secondary position-fixed top-0 start-0 m-5 z-index-1 "><i class="bi bi-arrow-left"></i></a>
+  <div class="text-center mb-5">
+    <h1>Our Departments</h1>
+    <p class="lead">Choose a department to see its doctors.</p>
+  </div>
+
+  <div class="row">
+    <div *ngFor="let dept of departments" class="col-lg-3 col-md-6 mb-4">
+      <div class="card h-100 text-center styled-card shadow-sm">
+        
+        <img [src]="dept.imageUrl" class="card-img-top" [alt]="dept.name + ' department'">
+        
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">{{ dept.name }}</h5>
+          <p class="card-text">{{ dept.description }}</p>
+          <a [routerLink]="['/doctors', dept.name]" class="btn btn-custom-gradient mt-auto">View Doctors</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

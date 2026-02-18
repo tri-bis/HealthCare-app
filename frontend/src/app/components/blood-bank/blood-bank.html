@@ -1,0 +1,52 @@
+<div class="container my-5">
+  <a routerLink="/dashboard" class="back-btn btn btn-secondary position-fixed top-0 start-0 m-5  "><i class="bi bi-arrow-left"></i></a>
+  <div class="text-center mb-5">
+    <h1>View Available Bloods</h1>
+    <p class="lead">View and get Updates about the blood bank</p>
+  </div>
+  <div *ngIf="isLoading" class="text-center text-muted">Loading data...</div>
+  <div class="blood-container">
+  <div *ngIf="!isLoading && bloodData.length === 0" class="text-center text-muted">
+    No blood data available at the moment.
+  </div>
+  
+  <div class="row g-4  ">
+    <div *ngFor="let blood of bloodData">
+      
+      <div class="card card-blood-status" [ngClass]="{
+        'high': blood.availability === 'High',
+        'moderate': blood.availability === 'Moderate',
+        'low': blood.availability === 'Low'
+      }">
+        
+        <div class="card-header-status">
+          <span class="status-badge" [ngClass]="{
+            'high': blood.secondaryStatus === 'High',
+            'moderate': blood.secondaryStatus === 'Moderate',
+            'low': blood.secondaryStatus === 'Low'
+          }">
+            {{ blood.secondaryStatus || 'General' }}
+          </span>
+          <span class="status-badge" [ngClass]="{
+            'high': blood.availability === 'High',
+            'moderate': blood.availability === 'Moderate',
+            'low': blood.availability === 'Low'
+          }">
+            {{ blood.availability }}
+          </span>
+        </div>
+
+        <div class="card-body">
+          <div>
+            <h2 class="blood-group">{{ blood.bloodGroup }}</h2>
+            <p class="unit-count">{{ blood.units }} Units Available</p>
+            <p class="description-text">Blood type for general use.</p>
+          </div>
+          
+        </div>
+      </div>
+
+    </div>
+  </div>
+  </div>
+</div>
