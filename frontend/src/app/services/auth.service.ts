@@ -7,7 +7,7 @@ import { tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'https://healthcare-app-1sd7.onrender.com/api';
+  private apiUrl = 'https://healthcare-app-1sd7.onrender.com/api/auth';
   private tokenKey = 'authToken';
   private currentUserSubject = new BehaviorSubject<any>(null);
   public currentUser$ = this.currentUserSubject.asObservable();

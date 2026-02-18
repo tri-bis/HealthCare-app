@@ -10,7 +10,7 @@ import { Bed, BedStats } from '../components/beds/bed.model';
 })
 export class BedService {
   // Use the base URL for the beds API
-  private apiUrl = 'http://localhost:3000/api/beds';
+  private apiUrl = 'https://healthcare-app-1sd7.onrender.com/api/beds';
 
   constructor(private http: HttpClient) { }
 

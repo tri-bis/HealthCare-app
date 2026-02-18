@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class DataService { // Renamed from 'Data' to 'DataService'
-  private apiUrl = 'http://localhost:3000/api'; // Your backend URL
+  private apiUrl = 'https://healthcare-app-1sd7.onrender.com/api'; // Your backend URL
 
   constructor(private http: HttpClient) { }
 
